@@ -16,4 +16,13 @@
 #
 PATH="/opt/chefdk/bin:${PATH}"
 
+  # Banner to say we're entering the configuration management phase.
+  cat << __EOF__
+
+  <><><><><><><><><><><><><><><><><><><><><><><><><><><>
+                      Update Phase
+  <><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+__EOF__
+
 chef-apply cookbooks/project/borg/recipes/update.rb
