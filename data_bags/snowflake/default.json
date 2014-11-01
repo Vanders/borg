@@ -1,0 +1,10 @@
+{
+  "id": "default",
+  "overrides": {
+    "osx": {
+      "login_window": {
+        "message_text": ""
+      }
+    }
+  }
+}

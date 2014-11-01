@@ -1,0 +1,26 @@
+{
+  "id": "agh",
+  "homesick_castles": [
+    {
+      "name": "dotfiles",
+      "source": "https://github.com/agh/dotfiles"
+    }
+  ],
+  "overrides": {
+    "osx": {
+      "settings": {
+        "software_updates": {
+          "automatic": 0
+        }
+      }
+    },
+    "owner": {
+      "name": "Alex Howells",
+      "email": "alex@howells.me",
+      "company": "Aeode Ltd"
+    }
+  },
+  "run_list": [
+    "osx::login_window"
+  ]
+}
