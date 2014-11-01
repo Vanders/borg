@@ -29,6 +29,7 @@ function subnotify() {
 # Display a title banner to indicate we're in the bootstrap phase.
 #
 cat << __EOF__
+
   <><><><><><><><><><><><><><><><><><><><><><><><><><><>
                      Injection Phase                   
   <><><><><><><><><><><><><><><><><><><><><><><><><><><>
