@@ -1,4 +1,4 @@
-include_recipe "homebrew"
+include_recipe 'homebrew'
 
 casks = data_bag_item('packages', 'default')['caskroom'] + \
          { 'homebrew' => [] }.merge(data_bag_item_if_exists('packages', node.current_user, []))['caskroom']
@@ -17,7 +17,7 @@ packages.each do |name|
   package name
 end
 
-package "brew-cask" do
+package 'brew-cask' do
   action :install
 end
 

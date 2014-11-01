@@ -1,12 +1,12 @@
-node.default["borg"]["repository"] = "https://github.com/agh/borg"
+node.default['borg']['repository'] = 'https://github.com/agh/borg'
 
 case node.current_user
-when "root"
-  node.default["borg"]["root"] = "/opt/borg"
-  node.default["borg"]["source_dir"] = "#{node.borg.root}/src"
+when 'root'
+  node.default['borg']['root'] = '/opt/borg'
+  node.default['borg']['source_dir'] = "#{node.borg.root}/src"
 else
-  node.default["borg"]["root"] = "#{node.etc.passwd[node.current_user].dir}/.borg"
-  node.default["borg"]["source_dir"] = "#{node.borg.root}/src"
+  node.default['borg']['root'] = "#{node.etc.passwd[node.current_user].dir}/.borg"
+  node.default['borg']['source_dir'] = "#{node.borg.root}/src"
 end
 
 directory node.borg.source_dir do
@@ -17,6 +17,6 @@ end
 
 git node.borg.source_dir do
   repository node.borg.repository
-  revision "master"
+  revision 'master'
   action :sync
 end

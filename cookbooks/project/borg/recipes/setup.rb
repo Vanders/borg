@@ -1,4 +1,4 @@
-#include_recipe "borg::update"
+# include_recipe "borg::update"
 
 directory node.borg.root do
   owner node.current_user
@@ -47,7 +47,7 @@ cookbook_file "#{node.borg.binary_dir}/borg" do
   source 'borg'
 end
 
-link "/usr/local/bin/borg" do
+link '/usr/local/bin/borg' do
   to "#{node.borg.binary_dir}/borg"
 end
 
@@ -56,6 +56,6 @@ cookbook_file "#{node.borg.binary_dir}/borg_env" do
   source 'borg_env'
 end
 
-link "/usr/local/bin/borg_env" do
+link '/usr/local/bin/borg_env' do
   to "#{node.borg.binary_dir}/borg_env"
 end

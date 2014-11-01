@@ -1,2 +1,2 @@
-include_recipe "borg::setup"
-include_recipe "borg::packages"
+include_recipe 'borg::setup'
+include_recipe 'borg::packages'
