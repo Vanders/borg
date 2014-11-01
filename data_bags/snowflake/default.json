@@ -1,10 +1,6 @@
 {
   "id": "default",
-  "overrides": {
-    "osx": {
-      "login_window": {
-        "message_text": ""
-      }
-    }
-  }
+  "homesick_castles": [ ],
+  "overrides": { },
+  "run_list": [ ]
 }
