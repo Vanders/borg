@@ -143,6 +143,10 @@ for x in "$@"; do
       display_title && display_wait
       assimilate
       ;;
+    "bootstrap" | "-b" | "--bootstrap")
+      display_title
+      bootstrap
+      ;;
     "help" | "-h" | "--help")  
       display_title
       display_help
