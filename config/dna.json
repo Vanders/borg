@@ -1,5 +1,8 @@
 {
   "run_list": [
-    "borg"
+    "borg",
+    "snowflake::overrides",
+    "snowflake::run_list",
+    "snowflake::user_recipe"
   ]
 }
