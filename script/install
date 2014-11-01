@@ -1,0 +1,30 @@
+#!/bin/bash
+#
+#      ___________
+#     /-/_'/-/_/-/|                   B   O   R   G
+#    /'-/-_'/-_//||          << https://github.com/agh/borg >>
+#   /__________/|/|
+#   |'|_'='-]:+|/||   Sit back and relax, human. Resistance is futile.
+#   |-+-|.|_'-'||//   This should be a painless process and before long this
+#   |['.[:!+-'=|//    system will be a functional part of the collective.
+#   |='!+|-:]|-|/
+#    ----------
+#
+#  Author: Alex Howells <alex@howells.me>
+#  Copyright (c) 2014, Aeode Ltd <hello@aeode.com>
+#  Please see the LICENSE file in the repository root for further information.
+
+# ToDo: This all needs converting to shell....
+
+
+# This just creates the directory if missing to facilitate the first run.
+# After that point, things like permissions are managed by the Borg cookbook.
+#unless File.directory?(borg_homedir)
+#  Dir.mkdir(borg_homedir)
+#  %w(backups cache cookbooks logs).each do |directory|
+#    target = "#{borg_homedir}/#{directory}"
+#    unless File.directory?(target)
+#      Dir.mkdir(target)
+#    end
+#  end
+#end
