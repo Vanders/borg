@@ -22,4 +22,4 @@ verify_api_cert  true
 
 cache_type       "BasicFile"
 file_cache_path	 "#{borg_homedir}/cache"
-file_backup_path "#{borg_homedir}/backups}"
+file_backup_path "#{borg_homedir}/backups"
