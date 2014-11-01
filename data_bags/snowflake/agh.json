@@ -21,6 +21,19 @@
     }
   },
   "run_list": [
-    "osx::login_window"
+    "osx::accessibility",
+    "osx::desktop_services",
+    "osx::dock",
+    "osx::finder",
+    "osx::firewall",
+    "osx::global", 
+    "osx::helpviewer",
+    "osx::keyboard",
+    "osx::launch_services",
+    "osx::login_window",
+    "osx::menubar",
+    "osx::screensaver",
+    "osx::software_update",
+    "osx::time_machine"
   ]
 }
