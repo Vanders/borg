@@ -24,7 +24,7 @@ BORG_VERBOSE=0
 
 function assimilate() {
   cd $BORG_DIR
-  update && bootstrap && config_mgmt && completion
+  update && bootstrap && converge && completion
 }
 
 function bold() {
@@ -46,7 +46,7 @@ function completion() {
 __EOF__
 }
 
-function config_mgmt() {
+function converge() {
   # Banner to say we're entering the configuration management phase.
   cat << __EOF__
 
@@ -146,6 +146,10 @@ for x in "$@"; do
     "bootstrap" | "-b" | "--bootstrap")
       display_title
       bootstrap
+      ;;
+    "converge" | "-c" | "--converge")
+      display_title
+      converge
       ;;
     "help" | "-h" | "--help")  
       display_title
