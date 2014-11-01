@@ -1,0 +1,158 @@
+#!/bin/bash
+#
+#      ___________
+#     /-/_'/-/_/-/|                   B   O   R   G
+#    /'-/-_'/-_//||          << https://github.com/agh/borg >>
+#   /__________/|/|
+#   |'|_'='-]:+|/||   Sit back and relax, human. Resistance is futile.
+#   |-+-|.|_'-'||//   This should be a painless process and before long this
+#   |['.[:!+-'=|//    system will be a functional part of the collective.
+#   |='!+|-:]|-|/
+#    ----------
+#
+#  Author: Alex Howells <alex@howells.me>
+#  Copyright (c) 2014, Aeode Ltd <hello@aeode.com>
+#  Please see the LICENSE file in the repository root for further information.
+#
+PATH="/opt/chefdk/bin:${PATH}"
+
+BORG_CHEF_ARGS=""
+BORG_DIR="$HOME/.borg/src"
+BORG_DRY_RUN=0
+BORG_TITLE=1
+BORG_VERBOSE=0
+
+function assimilate() {
+  cd $BORG_DIR
+  update && bootstrap && config_mgmt && completion
+}
+
+function bold() {
+  bold=`tput bold`
+  normal=`tput sgr0`
+  echo "${bold}$1${normal}"
+}
+
+function bootstrap() {
+  script/bootstrap
+}
+
+function completion() {
+  # We're finished so we can sing, dance, or cry. Depends.
+  cat << __EOF__
+
+  ===  System assimilation process has now finished  === 
+
+__EOF__
+}
+
+function config_mgmt() {
+  # Banner to say we're entering the configuration management phase.
+  cat << __EOF__
+
+  <><><><><><><><><><><><><><><><><><><><><><><><><><><>
+                    Assimilation Phase                   
+  <><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+__EOF__
+ 
+  # Actually kick off a Chef run.
+  chef-solo $BORG_CHEF_ARGS -c $BORG_DIR/config/borg.rb
+}
+
+function display_help() {
+  notify "Help is something we might have one day. For now, read the code."
+  exit 1
+}
+
+function display_title() {
+  if [ $BORG_TITLE -eq "0" ]; then return; fi
+  cat << __EOF__
+
+$(tput setaf 4)    ___________                                                           
+$(tput setaf 4)   /-/_'/-/_/-/| $(tput setaf 1)                  B   O   R   G                            
+$(tput setaf 4)  /'-/-_'/-_//|| $(tput setaf 1)         << https://github.com/agh/borg >>                
+$(tput setaf 4) /__________/|/| $(tput setaf 2)                                                           
+$(tput setaf 4) |'|_'='-]:+|/|| $(tput setaf 2)  Sit back and relax, human. Resistance is futile.         
+$(tput setaf 4) |-+-|.|_'-'||// $(tput setaf 2)  This should be a painless process and before long this   
+$(tput setaf 4) |['.[:!+-'=|//  $(tput setaf 2)  system will be a functional part of the collective.      
+$(tput setaf 4) |='!+|-:]|-|/
+$(tput setaf 4)  ----------
+$(tput sgr0)
+__EOF__
+}
+
+function display_wait() {
+  bold "  Ready to get started? Submit to assimilation by typing your password."
+  bold "  We need your password so packages that require sudo can be installed."
+  
+  # Ensure that sudo isn't going to prompt for a password in a weird place.
+  sudo -k && sudo -p "  Password: " -l 2>&1 >/dev/null && echo "" || exit 1
+}
+
+function fatal() {
+  echo "!!! $1"
+  exit 1
+}
+
+function notify() {
+  echo "==> $1"
+}
+
+function update() {
+  script/update
+}
+
+if [ ! -d $BORG_DIR ]; then
+  display_title
+  fatal 'Expected to find Borg in $BORG_DIR and it was not present.'
+fi
+
+if [ $# -eq 0 ]; then
+  display_title
+  fatal 'No arguments were passed. Did you mean to look at --help?'
+fi
+
+#
+# Flag Parsing:
+# Figure out any flags which might have been passed.
+# This controls verbosity, quietness or whether action is taken.
+#
+for i in "$@"; do
+  case "$i" in
+    "--dry" | "-d")
+      BORG_DRY_RUN=1
+      BORG_CHEF_ARGS="-W ${BORG_CHEF_ARGS}"
+      ;;
+    "--notitle" | "-n")
+      BORG_TITLE=0
+      ;;
+    "--verbose" | "-v")
+      BORG_VERBOSE=1
+      BORG_CHEF_ARGS="--log_level debug ${BORG_CHEF_ARGS}"
+      ;;
+  esac
+done
+
+#
+# Command Parsing
+#
+for x in "$@"; do
+  case "$x" in
+    "assimilate" | "-a" | "--assimilate")
+      display_title && display_wait
+      assimilate
+      ;;
+    "help" | "-h" | "--help")  
+      display_title
+      display_help
+      ;;
+    "update" | "-u" | "--update")
+      display_title
+      update
+      ;;
+    *)
+      display_title
+      fatal "Sorry but your command was not recognised."
+  esac
+done
