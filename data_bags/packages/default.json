@@ -1,0 +1,13 @@
+{
+  "id": "default",
+  "taps": [
+    "caskroom/homebrew-cask"
+  ],
+  "homebrew": [
+    "bash-completion",
+    "htop",
+    "wget"
+  ],
+  "caskroom": [
+  ]
+}

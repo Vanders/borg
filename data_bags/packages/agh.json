@@ -1,0 +1,90 @@
+{
+  "id": "agh",
+  "taps": [
+    "agh/brews",
+    "agh/casks",
+    "caskroom/fonts",
+    "caskroom/versions",
+    "homebrew/binary",
+    "homebrew/completions",
+    "homebrew/dupes"
+  ],
+  "homebrew": [
+    /*
+     * Tap: Homebrew (main)
+     */
+    "bash",
+    "fish",
+    "fping",
+    "git",
+    "go",
+    "mobile-shell",
+    "mtr",
+    "nmap",
+    "p7zip",
+    "pwgen",
+    "siege",
+    "ssldump",
+    "sslscan",
+    "tcptraceroute",
+    "tree",
+    "tmux",
+    "unrar",
+    "zmap",
+
+    /*
+     * Tap: homebrew/binary
+     */
+    "packer",
+
+    /*
+     * Tap: homebrew/dupes
+     */
+    "homebrew/dupes/openssh"
+  ],
+  "caskroom": [
+    "adium",
+    "atom",
+    "authy-bluetooth",
+    "bartender",
+    "boxcryptor-classic",
+    "caffeine",
+    "ccleaner",
+    "daisydisk",
+    "dropbox",
+    "evernote",
+    "firefox",
+    "flash",
+    "flux",
+    "google-chrome",
+    "google-chrome-canary",
+    "google-drive",
+    "google-hangouts",
+    "gpgtools",
+    "hazel",
+    "hyperdock",
+    "istat-menus",
+    "iterm2",
+    "java7",
+    "kaleidoscope",
+    "little-snitch",
+    "mplayerx",
+    "onepassword",
+    "osxfuse",
+    "plex-media-server",
+    "prolific-usb-serial-driver",
+    "shimo",
+    "silverlight",
+    "skype",
+    "sonos",
+    "steam",
+    "the-unarchiver",
+    "tinkertool",
+    "totalfinder",
+    "transmission",
+    "vagrant",
+    "vlc",
+    "vmware-fusion",
+    "yubikey-personalization-gui"
+  ]
+}
