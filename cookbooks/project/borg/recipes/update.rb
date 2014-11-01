@@ -15,7 +15,7 @@ directory node.borg.source_dir do
   mode '0700'
 end
 
-git "borg" do
+git node.borg.source_dir do
   repository node.borg.repository
   revision "master"
   action :sync
