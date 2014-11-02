@@ -89,6 +89,7 @@
     "vagrant",
     "vlc",
     "vmware-fusion",
+    "wacom-tablet",
     "yubikey-personalization-gui"
   ]
 }
