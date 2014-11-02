@@ -30,6 +30,7 @@
     "osx::helpviewer",
     "osx::keyboard",
     "osx::launch_services",
+    "osx::locate",
     "osx::login_window",
     "osx::menubar",
     "osx::screensaver",
