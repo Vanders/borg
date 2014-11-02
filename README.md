@@ -9,26 +9,28 @@ vaguely in sync in terms of the software and settings.
 I'd guess this is a pain I feel a couple of times a year on average. It sucks.
 
 Manual steps and checklists are okay, and Borg automates as much as sensible.
+
 Everything involved in setting up my systems is over in [agh/setup](https://github.com/agh/setup)
-and that includes pointy-clicky actions taken in Mac App Store, et al.
+and that includes pointy-clicky actions taken in Mac App Store, etc.
 
 Where possible settings are parameterized, so you can use this too without :rage3:
 and Borg is chef-solo so it has few external dependencies. No need for Chef Server.
+I accept Pull Requests too. :smile:
 
 The intent is that Borg should run as your user (e.g. `agh`) and that it will
-elevate privileges with sudo :muscle: as required to install packages, etc.
-Something like 95% of the lifting is done by Chef, the remaining 5% is Bash,
+elevate privileges :muscle: by using sudo as required to install packages, etc.
+Something like >95% of the heavy lifting is done by Chef, the remaining 5% is Bash,
 which maintains XCode Command Line Tools, Homebrew, et al.
 
 None of the fancy :zap: features in Bash 4.x can be used until Apple ships that.
 No warranty is supplied. If you try to run this on Ruby 1.9 (or earlier) or on
-anything before OSX 10.10 ('Yosemite') then your results **will** vary. Sorry.
+anything before OSX 10.10 ('Yosemite') then your results **will** vary - sorry.
 Perhaps you should give consideration to upgrading?
 
 ## Prerequisites
 
   * Install OSX 'Yosemite' (10.10) from scratch onto your system.
-  * Be the only user of that system. This takes over /usr/local and other places.
+  * Be the only user of that system. This takes over `/usr/local` and other places.
 
 ## Install
 
@@ -40,12 +42,7 @@ Perhaps you should give consideration to upgrading?
 
 ## What Does it Do?
 
-In essence the convergence is broken down into three phases:
+In essence the convergence is broken down into two phases:
 
   * 'Update Phase' - Pulling down the latest hotness from GitHub.
-  * 'Injection Phase' - Making sure all the prerequisites are satisfied like Homebrew.
   * 'Assimilation Phase' - Running chef-solo to actually personalize your system.
-
-
-
-
