@@ -17,6 +17,7 @@ packages.each do |name|
   package name
 end
 
+homebrew_tap 'caskroom/cask'
 package 'brew-cask' do
   action :install
 end
