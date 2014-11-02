@@ -32,7 +32,6 @@
     "osx::launch_services",
     "osx::locate",
     "osx::login_window",
-    "osx::menubar",
     "osx::screensaver",
     "osx::software_update",
     "osx::time_machine"
