@@ -2,8 +2,8 @@ DEPENDENCIES
   homebrew
   osx
     git: https://github.com/agh-cookbooks/osx
-    revision: 26ab1a3c50f267c55be54b38f160c6a225f8f0c3
+    revision: d5b452d0fd68fa73b054529a5967a111518e0370
 
 GRAPH
   homebrew (1.9.2)
-  osx (2.9.97)
+  osx (2.9.98)
