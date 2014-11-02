@@ -110,6 +110,7 @@ fi
 if [ $(stat -f "%Su" /usr/local) != "$USER" ]; then
   notify "😠  Permissions on /usr/local look wrong. Gonna help you fix that."
   sudo chown -R $USER:admin /usr/local /Library/Caches/Homebrew /opt/homebrew-cask
+  sudo chmod 775 /usr/local /Library/Caches/Homebrew /opt/homebrew-cask
 else
   notify "👍  Permissions on necessary directories all look good!"
 fi
