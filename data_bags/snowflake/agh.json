@@ -32,7 +32,6 @@
     "osx::hostname",
     "osx::keyboard",
     "osx::launch_services",
-    "osx::locate",
     "osx::login_window",
     "osx::screensaver",
     "osx::software_update",
