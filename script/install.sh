@@ -149,17 +149,17 @@ if [ ! -d $HOME/.borg ]; then
 
   # Pull down source from GitHub for the first time.
   git clone https://github.com/agh/borg $BORG_ROOT/src
-
-  # Symlinks so that stuff appears in PATH.
-  BORG_TOOLS="borg"
-  for tool in $BORG_TOOLS; do
-    if [ ! -f /usr/local/bin/$tool ]; then
-      ln $BORG_ROOT/src/script/$tool /usr/local/bin/$tool
-    fi
-  done
 else
   notify "👍  I've found Borg and thus you can 'borg update' to get newer code."
 fi
+
+# Symlinks so that stuff appears in PATH.
+BORG_TOOLS="borg"
+for tool in $BORG_TOOLS; do
+  if [ ! -f /usr/local/bin/$tool ]; then
+    ln $BORG_ROOT/src/script/$tool /usr/local/bin/$tool
+  fi
+done
 
 #
 # Validation
