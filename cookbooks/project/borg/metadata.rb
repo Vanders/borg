@@ -10,4 +10,3 @@ supports 'mac_os_x'
 
 depends 'homebrew'
 depends 'osx'
-depends 'sudo'
