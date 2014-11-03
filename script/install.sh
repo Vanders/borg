@@ -69,19 +69,22 @@ fi
 #
 # Xcode Command Line Tools
 #
-if [ ! -f /usr/bin/git ]; then
+if ! /usr/bin/xcode-select -p >/dev/null 2>&1; then
   notify 'Installing the Xcode Command Line Tools. When this completes we shall continue.'
   xcode-select --install
-  for i in `seq 1 60`; do
-    if [ -f /usr/bin/git ]; then
-      break
-    else
+  for i in `seq 1 360`; do
+    if ! /usr/bin/xcode-select -p >/dev/null 2>&1; then
       sleep 5
+    else
+      break
     fi
   done
 else
   notify '👍  Found the Xcode Command Line Tools!'
 fi
+
+# Sanity check on CLT install completion...
+/usr/bin/xcode-select -p >/dev/null 2>&1 || echo "Fatal: Xcode CLT error" && exit 1
 
 #
 # ChefDK
