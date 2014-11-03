@@ -4,19 +4,11 @@ package 'sudo' do
   not_if 'which sudo'
 end
 
-if node['authorization']['sudo']['include_sudoers_d']
-  directory "#{prefix}/sudoers.d" do
-    mode    '0755'
-    owner   'root'
-    group   node['root_group']
-  end
-end
+execute "chown #{node.current_user}:admin /etc/sudoers"
 
 template "#{prefix}/sudoers" do
   source 'sudoers.erb'
   mode   '0440'
-  owner  'root'
-  group  node['root_group']
   variables(
     :sudoers_groups    => node['authorization']['sudo']['groups'],
     :sudoers_users     => node['authorization']['sudo']['users'],
