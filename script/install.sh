@@ -49,6 +49,23 @@ bold "  We need your password so packages that require sudo can be installed."
 sudo -k && sudo -p "  Password: " -l 2>&1 >/dev/null && echo "" || exit 1
 
 #
+# Extend sudo tickets to last for 30 minutes.
+#
+if [ ! $(grep -q 'timestamp_timeout' /private/etc/sudoers ]; then
+  notify 'Extending the sudo timeout, or installs will error out."
+  sudo cat << __EOF__ >> /private/etc/sudoers
+
+# Borg - Facilitates installs without sudo ticket expiring and causing errors.
+Defaults        !fqdn,insults,!lecture,timestamp_timeout=30,tty_tickets
+__EOF__
+
+  # Making sure we have a ticket good for 30 minutes.
+  sudo -v
+else
+  notify '👍  Looks like sudo is already hot to trot with Borg!'
+fi
+
+#
 # Xcode Command Line Tools
 #
 if [ ! $(xcode-select -p) ]; then
