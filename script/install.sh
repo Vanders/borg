@@ -70,9 +70,15 @@ fi
 # Xcode Command Line Tools
 #
 if [ ! -f /usr/bin/git ]; then
-  notify 'Installing the Xcode Command Line Tools. Press <ENTER> when this completes.'
+  notify 'Installing the Xcode Command Line Tools. When this completes we'll continue.'
   xcode-select --install
-  read
+  for i in `seq 1 60`; do
+    if [ -f /usr/bin/git ]; then
+      break
+    else
+      sleep 5
+    fi
+  done
 else
   notify '👍  Found the Xcode Command Line Tools!'
 fi
