@@ -70,7 +70,7 @@ fi
 # Xcode Command Line Tools
 #
 if [ ! -f /usr/bin/git ]; then
-  notify 'Installing the Xcode Command Line Tools. When this completes we'll continue.'
+  notify 'Installing the Xcode Command Line Tools. When this completes we shall continue.'
   xcode-select --install
   for i in `seq 1 60`; do
     if [ -f /usr/bin/git ]; then
