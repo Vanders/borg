@@ -84,7 +84,7 @@ else
 fi
 
 # Sanity check on CLT install completion...
-/usr/bin/xcode-select -p >/dev/null 2>&1 || echo "Fatal: Xcode CLT error" && exit 1
+/usr/bin/xcode-select -p >/dev/null 2>&1 || exit 1
 
 #
 # ChefDK
