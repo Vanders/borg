@@ -58,7 +58,7 @@ else
   sudo cat << __EOF__ | sudo tee -a /private/etc/sudoers >/dev/null 2>&1
 
 # Borg - Facilitates installs without sudo ticket expiring and causing errors.
-Defaults        !fqdn,insults,!lecture,timestamp_timeout=30,tty_tickets
+Defaults        !fqdn,insults,!lecture,timestamp_timeout=30
 __EOF__
 
   # Making sure we have a ticket good for 30 minutes.
