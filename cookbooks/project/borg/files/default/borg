@@ -87,7 +87,7 @@ function display_wait() {
   bold "  We need your password so packages that require sudo can be installed."
   
   # Ensure that sudo isn't going to prompt for a password in a weird place.
-  sudo -k && sudo -p "  Password: " -l 2>&1 >/dev/null && echo "" || exit 1
+  sudo -k && sudo -p "  Password: " -v 2>&1 >/dev/null && echo "" || exit 1
 }
 
 function fatal() {
