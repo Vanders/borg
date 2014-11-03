@@ -8,5 +8,6 @@ version '0.1.0'
 
 supports 'mac_os_x'
 
-depends 'osx'
 depends 'homebrew'
+depends 'osx'
+depends 'sudo'
