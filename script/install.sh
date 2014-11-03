@@ -166,7 +166,7 @@ fi
 BORG_TOOLS="borg"
 for tool in $BORG_TOOLS; do
   if [ ! -f /usr/local/bin/$tool ]; then
-    ln $BORG_ROOT/src/script/$tool /usr/local/bin/$tool
+    ln -sf $BORG_ROOT/src/script/$tool /usr/local/bin/$tool
   fi
 done
 
