@@ -69,7 +69,7 @@ fi
 #
 # Xcode Command Line Tools
 #
-if [ ! $(xcode-select -p) ]; then
+if [ ! -f /usr/bin/git ]; then
   notify 'Installing the Xcode Command Line Tools. Press <ENTER> when this completes.'
   xcode-select --install
   read
