@@ -4,7 +4,7 @@ package 'sudo' do
   not_if 'which sudo'
 end
 
-execute "chown #{node.current_user}:admin /etc/sudoers"
+execute "sudo chown #{node.current_user}:admin /etc/sudoers"
 
 template "#{prefix}/sudoers" do
   source 'sudoers.erb'
