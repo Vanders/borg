@@ -51,7 +51,7 @@ sudo -k && sudo -p "  Password: " -l 2>&1 >/dev/null && echo "" || exit 1
 #
 # Extend sudo tickets to last for 30 minutes.
 #
-if [ ! $(grep -q 'timestamp_timeout' /private/etc/sudoers) ]; then
+if [ ! -f /private/etc/sudoers.borg ]; then
   notify 'Extending the sudo timeout, or installs will error out."
   sudo cat << __EOF__ >> /private/etc/sudoers
 
@@ -61,6 +61,7 @@ __EOF__
 
   # Making sure we have a ticket good for 30 minutes.
   sudo -v
+  sudo touch /private/etc/sudoers.borg
 else
   notify '👍  Looks like sudo is already hot to trot with Borg!'
 fi
