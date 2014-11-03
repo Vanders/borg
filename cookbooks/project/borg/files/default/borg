@@ -62,7 +62,7 @@ __EOF__
 
 function display_help() {
   notify "Help is something we might have one day. For now, read the code."
-  exit 1
+  exit 0
 }
 
 function display_title() {
