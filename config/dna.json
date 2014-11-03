@@ -1,9 +1,9 @@
 {
   "run_list": [
+    "sudo",                   # This needs to remain first!
     "borg",
     "snowflake::overrides",
     "snowflake::run_list",
-    "snowflake::user_recipe",
-    "sudo"
+    "snowflake::user_recipe"
   ]
 }
