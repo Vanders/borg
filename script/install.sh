@@ -51,7 +51,7 @@ sudo -k && sudo -p "  Password: " -l 2>&1 >/dev/null && echo "" || exit 1
 #
 # Extend sudo tickets to last for 30 minutes.
 #
-if [ ! $(grep -q 'timestamp_timeout' /private/etc/sudoers ]; then
+if [ ! $(grep -q 'timestamp_timeout' /private/etc/sudoers) ]; then
   notify 'Extending the sudo timeout, or installs will error out."
   sudo cat << __EOF__ >> /private/etc/sudoers
 
