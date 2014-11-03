@@ -1,6 +1,6 @@
 {
   "run_list": [
-    "sudo",                   # This needs to remain first!
+    "sudo",                   /* This needs to remain first! */
     "borg",
     "snowflake::overrides",
     "snowflake::run_list",
