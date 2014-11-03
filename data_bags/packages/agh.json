@@ -1,3 +1,4 @@
+/* sslscan is currently f*cked. Add it back later. */
 {
   "id": "agh",
   "taps": [
@@ -25,7 +26,6 @@
     "pwgen",
     "siege",
     "ssldump",
-    "sslscan",
     "tcptraceroute",
     "tree",
     "tmux",
