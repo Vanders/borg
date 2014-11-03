@@ -24,17 +24,13 @@ BORG_VERBOSE=0
 
 function assimilate() {
   cd $BORG_DIR
-  update && bootstrap && converge && completion
+  update && converge && completion
 }
 
 function bold() {
   bold=`tput bold`
   normal=`tput sgr0`
   echo "${bold}$1${normal}"
-}
-
-function bootstrap() {
-  script/bootstrap
 }
 
 function completion() {
@@ -142,10 +138,6 @@ for x in "$@"; do
     "assimilate" | "-a" | "--assimilate")
       display_title && display_wait
       assimilate
-      ;;
-    "bootstrap" | "-b" | "--bootstrap")
-      display_title
-      bootstrap
       ;;
     "converge" | "-c" | "--converge")
       display_title

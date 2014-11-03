@@ -15,9 +15,15 @@
 #  Please see the LICENSE file in the repository root for further information.
 #
 PATH="/opt/chefdk/bin:${PATH}"
+BORG="$(cd $(dirname $0)/.. && pwd)"
+BERKS_VENDOR="${BORG}/cookbooks/upstream"
 
-  # Banner to say we're entering the configuration management phase.
-  cat << __EOF__
+function notify() {
+  echo "==> $1"
+}
+
+# Banner to say we're entering the configuration management phase.
+cat << __EOF__
 
   <><><><><><><><><><><><><><><><><><><><><><><><><><><>
                       Update Phase
@@ -26,3 +32,12 @@ PATH="/opt/chefdk/bin:${PATH}"
 __EOF__
 
 chef-apply cookbooks/project/borg/recipes/update.rb
+
+notify "😠  Reinstalling upstream cookbook dependencies with Berkshelf."
+
+if [ -d $BERKS_VENDOR ]; then
+  rm -rf $BERKS_VENDOR
+fi
+
+berks install -q
+berks vendor $BERKS_VENDOR -q
