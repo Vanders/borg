@@ -21,6 +21,7 @@ BORG_DIR="$HOME/.borg/src"
 BORG_DRY_RUN=0
 BORG_TITLE=1
 BORG_VERBOSE=0
+BORG_ACTION=""
 
 function assimilate() {
   cd $BORG_DIR
@@ -127,32 +128,42 @@ for i in "$@"; do
       BORG_VERBOSE=1
       BORG_CHEF_ARGS="--log_level debug ${BORG_CHEF_ARGS}"
       ;;
-  esac
-done
-
-#
-# Command Parsing
-#
-for x in "$@"; do
-  case "$x" in
     "assimilate" | "-a" | "--assimilate")
-      display_title && display_wait
-      assimilate
+      BORG_ACTION="assimilate"
       ;;
     "converge" | "-c" | "--converge")
-      display_title
-      converge
+      BORG_ACTION="converge"
       ;;
     "help" | "-h" | "--help")  
-      display_title
-      display_help
+      BORG_ACTION="help"
       ;;
     "update" | "-u" | "--update")
-      display_title
-      update
+      BORG_ACTION="update"
       ;;
     *)
       display_title
       fatal "Sorry but your command was not recognised."
   esac
 done
+
+#
+# Command Parsing
+#
+case "$BORG_ACTION" in
+  "assimilate")
+    display_title && display_wait
+    assimilate
+    ;;
+  "converge")
+    display_title
+    converge
+    ;;
+  "help")  
+    display_title
+    display_help
+    ;;
+  "update")
+    display_title
+    update
+    ;;
+esac
